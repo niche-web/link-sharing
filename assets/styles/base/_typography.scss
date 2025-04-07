@@ -1,0 +1,39 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: local("../fonts/InstrumentSans-Regular.ttf");
+  font-weight: regular;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: local("../fonts/InstrumentSans-SemiBold.ttf");
+  font-weight: semi-bold;
+  font-style: normal;
+  font-display: optional;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: local("../fonts/InstrumentSans-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+  font-display: optional;
+}
+
+body {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: $font-size-body-m;
+  line-height: 150%;
+  font-weight: regular;
+  color: $color-grey-dark;
+}
+
+h1,
+h2 {
+  @include heading(medium);
+}

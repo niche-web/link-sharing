@@ -1,0 +1,36 @@
+@use "./variables" as *;
+
+//////////////////// MEDIA QUERIES //////////////////
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: $bp-tablet) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: $bp-mobile) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile-small {
+    @media only screen and (max-width: $bp-mobile-small) {
+      @content;
+    }
+  }
+}
+
+//////////////////// TYPOGRAPHY ////////////////////
+@mixin heading($size) {
+  font-weight: bold;
+
+  @if $size == "small" {
+    font-size: $font-size-heading-s;
+  } @else if $size == "medium" {
+    font-size: $font-size-heading-m;
+    @include respond(mobile) {
+      font-size: $font-size-heading-m-mobile;
+    }
+  }
+}
