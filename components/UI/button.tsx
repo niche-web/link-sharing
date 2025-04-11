@@ -5,7 +5,7 @@ import styles from "./button.module.scss";
 import { LinkProps } from "next/link";
 
 type ButtonProps = ComponentPropsWithoutRef<"button"> & {
-  href: never;
+  href?: never;
 };
 export type CustomLinkProps = ComponentPropsWithoutRef<"a"> &
   LinkProps & {
@@ -24,6 +24,7 @@ const isLinkProps = (props: Props): props is CustomLinkProps => {
 };
 
 const Button = (props: Props) => {
+  const classStyle = styles[`button--${props.buttonStyle}`];
   if (isLinkProps(props)) {
     const { buttonStyle, className, href, children, ...otherProps } = props;
     if (props.tab) {
@@ -37,11 +38,26 @@ const Button = (props: Props) => {
         </NavLink>
       );
     } else {
-      return <Link {...props}>{props.children}</Link>;
+      return (
+        <Link
+          href={href}
+          className={`${styles.button} ${classStyle} ${className}`}
+          {...otherProps}
+        >
+          {children}
+        </Link>
+      );
     }
   }
 
-  return <button {...props}>{props.children}</button>;
+  return (
+    <button
+      className={`${styles.button} ${classStyle} ${props.className}`}
+      {...props}
+    >
+      {props.children}
+    </button>
+  );
 };
 
 export default Button;

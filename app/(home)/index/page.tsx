@@ -1,4 +1,5 @@
 import EmptyIllustration from "@/components/empty-illustration";
+import Button from "@/components/UI/button";
 
 const IndexPage = () => {
   return (
@@ -15,7 +16,7 @@ const IndexPage = () => {
         <EmptyIllustration />
       </section>
       <footer>
-        <button>Save</button>
+        <Button buttonStyle="primary">Save</Button>
       </footer>
     </>
   );

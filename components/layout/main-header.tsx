@@ -20,7 +20,9 @@ const MainHeader = ({ classes }: { classes?: string }) => {
       </ul>
       <ul>
         <li>
-          <Button href="/preview">Preview</Button>
+          <Button href="/preview" buttonStyle="secondary">
+            Preview
+          </Button>
         </li>
       </ul>
     </header>
