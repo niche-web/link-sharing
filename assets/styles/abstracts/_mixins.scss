@@ -23,14 +23,24 @@
 
 //////////////////// TYPOGRAPHY ////////////////////
 @mixin heading($size) {
-  font-weight: bold;
-
   @if $size == "small" {
     font-size: $font-size-heading-s;
+    font-weight: 600;
   } @else if $size == "medium" {
+    font-weight: 700;
     font-size: $font-size-heading-m;
     @include respond(mobile) {
       font-size: $font-size-heading-m-mobile;
     }
+  }
+}
+
+//////////////////// ROUNDED ////////////////////
+@mixin rounded($radius) {
+  @if $radius == "small" {
+    border-radius: 8px;
+  }
+  @if $radius == "large" {
+    border-radius: 12px;
   }
 }

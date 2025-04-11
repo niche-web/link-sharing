@@ -1,22 +1,26 @@
 import ArtLogo from "@/components/art-logo";
-import Link from "next/link";
-import NavLink from "@/components/UI/nav-link";
+import Button from "@/components/UI/button";
+import styles from "./main-header.module.scss";
 
-const MainHeader = () => {
+const MainHeader = ({ classes }: { classes?: string }) => {
   return (
-    <header>
+    <header className={`${styles["main-header"]} ${classes}`}>
       <ArtLogo />
-      <ul>
+      <ul className={styles["main-header__middle"]}>
         <li>
-          <NavLink href="/index">Links</NavLink>
+          <Button href="/index" tab>
+            Links
+          </Button>
         </li>
         <li>
-          <NavLink href="/profile">Profile Details</NavLink>
+          <Button href="/profile" tab>
+            Profile Details
+          </Button>
         </li>
       </ul>
       <ul>
         <li>
-          <Link href="/preview">Preview</Link>
+          <Button href="/preview">Preview</Button>
         </li>
       </ul>
     </header>

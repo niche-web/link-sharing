@@ -1,0 +1,12 @@
+@use "../../assets/styles/abstracts/variables" as *;
+
+.nav-link {
+  &:hover {
+    color: $color-purple;
+  }
+
+  &--active {
+    color: $color-purple;
+    background-color: $color-purple-light;
+  }
+}

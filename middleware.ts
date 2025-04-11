@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const isAuthenticated = false; // Replace with your actual authentication logic
+const isAuthenticated = true; // Replace with your actual authentication logic
 
 const middleware = (req: NextRequest) => {
   if (req.nextUrl.pathname == "/" && isAuthenticated) {

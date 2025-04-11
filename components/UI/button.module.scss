@@ -1,0 +1,10 @@
+@use "../../assets/styles/abstracts/mixins" as mixin;
+
+.button {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  @include mixin.heading("small");
+  @include mixin.rounded("small");
+  padding: 1.1rem 2.7rem;
+}

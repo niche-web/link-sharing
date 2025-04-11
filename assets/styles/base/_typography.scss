@@ -2,34 +2,34 @@
 @use "../abstracts/mixins" as *;
 
 @font-face {
-  font-family: "Instrument Sans";
+  font-family: "Instrument Sans Regular";
   src: local("../fonts/InstrumentSans-Regular.ttf");
-  font-weight: regular;
-  font-style: normal;
-  font-display: optional;
+  // font-weight: 400;
+  // font-style: normal;
+  // font-display: optional;
 }
 
 @font-face {
   font-family: "Instrument Sans";
   src: local("../fonts/InstrumentSans-SemiBold.ttf");
-  font-weight: semi-bold;
-  font-style: normal;
-  font-display: optional;
+  // font-weight: 600;
+  // font-style: normal;
+  // font-display: optional;
 }
 
 @font-face {
   font-family: "Instrument Sans";
   src: local("../fonts/InstrumentSans-Bold.ttf");
-  font-weight: bold;
-  font-style: normal;
-  font-display: optional;
+  // font-weight: 700;
+  // font-style: normal;
+  // font-display: optional;
 }
 
 body {
   font-family: "Instrument Sans", sans-serif;
   font-size: $font-size-body-m;
-  line-height: 150%;
-  font-weight: regular;
+  line-height: 1.5;
+  font-weight: 400;
   color: $color-grey-dark;
 }
 

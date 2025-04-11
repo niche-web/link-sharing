@@ -1,0 +1,25 @@
+@use "../assets/styles/abstracts/variables" as *;
+
+.empty-illustration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  background-color: $color-grey-light;
+  padding: 6.25rem 0;
+
+  img {
+    width: 15rem;
+    height: auto;
+  }
+
+  figcaption {
+    width: 48.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.4rem;
+    text-align: center;
+  }
+}
