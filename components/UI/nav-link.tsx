@@ -2,22 +2,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnchorProps } from "./button";
+import { CustomLinkProps } from "./button";
 import styles from "./nav-link.module.scss";
 
-const NavLink = (props: AnchorProps) => {
+const NavLink = ({ href, className, ...otherProps }: CustomLinkProps) => {
   const pathname = usePathname();
-  const isActive = pathname.startsWith(props.href);
+  const isActive = pathname.startsWith(href);
   return (
     <Link
-      href={props.href}
+      href={href}
       className={
         isActive
-          ? `${styles["nav-link--active"]} ${styles["nav-link"]} ${props.className}`
-          : ` ${styles["nav-link"]} ${props.className}`
+          ? `${styles["nav-link--active"]} ${styles["nav-link"]} ${className}`
+          : ` ${styles["nav-link"]} ${className}`
       }
+      {...otherProps}
     >
-      {props.children}
+      {otherProps.children}
     </Link>
   );
 };

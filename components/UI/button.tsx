@@ -2,41 +2,44 @@ import { type ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import NavLink from "./nav-link";
 import styles from "./button.module.scss";
+import { LinkProps } from "next/link";
 
 type ButtonProps = ComponentPropsWithoutRef<"button"> & {
   href: never;
 };
-export type AnchorProps = ComponentPropsWithoutRef<"a"> & {
-  href: string;
-};
+export type CustomLinkProps = ComponentPropsWithoutRef<"a"> &
+  LinkProps & {
+    href: string;
+  };
+
 type ExtraStylingProps = {
   tab?: boolean;
   buttonStyle?: "primary" | "secondary";
 };
 
-type Props = (ButtonProps | AnchorProps) & ExtraStylingProps;
+type Props = (ButtonProps | CustomLinkProps) & ExtraStylingProps;
 
-const isAnchorProps = (
-  props: ButtonProps | AnchorProps
-): props is AnchorProps => {
+const isLinkProps = (props: Props): props is CustomLinkProps => {
   return "href" in props;
 };
 
 const Button = (props: Props) => {
-  if (isAnchorProps(props))
+  if (isLinkProps(props)) {
+    const { buttonStyle, className, href, children, ...otherProps } = props;
     if (props.tab) {
       return (
         <NavLink
-          href={props.href}
-          className={`${styles.button} ${props.className} `}
-          {...props}
+          href={href}
+          className={`${styles.button} ${className} `}
+          {...otherProps}
         >
-          {props.children}
+          {children}
         </NavLink>
       );
     } else {
       return <Link {...props}>{props.children}</Link>;
     }
+  }
 
   return <button {...props}>{props.children}</button>;
 };
