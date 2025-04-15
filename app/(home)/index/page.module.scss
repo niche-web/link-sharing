@@ -1,0 +1,8 @@
+@use "../../../assets/styles/abstracts/variables" as *;
+
+.index {
+  &__button_add {
+    width: 100%;
+    margin: 4rem 0 2.4rem;
+  }
+}

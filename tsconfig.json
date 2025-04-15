@@ -28,7 +28,8 @@
     "next-env.d.ts", // Include the next-env.d.ts file
     ".next/types/**/*.ts", // Include all TypeScript files in the .next/types directory
     "**/*.ts", // Include all TypeScript files
-    "**/*.tsx" // Include all TypeScript files with .tsx extension
+    "**/*.tsx", // Include all TypeScript files with .tsx extension
+    "next.config.js"
   ], // Specify the files to be included in the compilation
   "exclude": [
     "node_modules" // Exclude the node_modules directory

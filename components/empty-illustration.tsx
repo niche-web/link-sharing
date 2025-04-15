@@ -1,11 +1,23 @@
-import Image from "next/image";
-import emptyIllustration from "@/assets/images/illustration-empty.svg";
+import emptyImage from "@/assets/images/illustration-empty.svg";
 import styles from "./empty-illustration.module.scss";
+import Image from "next/image";
+import Container from "./UI/container";
 
 const EmptyIllustration = ({ classes }: { classes?: string }) => {
   return (
-    <figure className={`${styles["empty-illustration"]} ${classes}`}>
-      <Image src={emptyIllustration} alt="Empty illustration" />
+    <Container
+      as="figure"
+      rounded
+      dark
+      classes={`${styles["empty-illustration"]} ${classes}`}
+    >
+      <Image
+        src={emptyImage}
+        alt="Empty illustration"
+        className={styles["empty-illustration__image"]}
+        width={250}
+        height={161}
+      />
       <figcaption>
         <h2>Let&apos;s get you started</h2>{" "}
         <p>
@@ -14,7 +26,7 @@ const EmptyIllustration = ({ classes }: { classes?: string }) => {
           share your profiles with everyone!
         </p>{" "}
       </figcaption>
-    </figure>
+    </Container>
   );
 };
 

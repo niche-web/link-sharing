@@ -1,7 +1,7 @@
 import MainHeader from "@/components/layout/main-header";
 import styles from "./home-layout.module.scss";
-import Image from "next/image";
-import phoneMockup from "@/assets/images/illustration-phone-mockup.svg";
+import Button from "@/components/UI/button";
+import Container from "@/components/UI/container";
 
 export const metadata = {
   title: "Index Page",
@@ -12,16 +12,25 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <MainHeader classes={styles.container__header} />
-      <main className={styles.container__content}>
-        <section id="mockup" className={styles["container__content-mockup"]}>
-          <div></div>
-        </section>
-        <section
-          id="main-content"
-          className={styles["container__content-main"]}
+      <main id="main-content" className={styles["container__content"]}>
+        <Container
+          rounded
+          as="aside"
+          classes={styles["container__content-mockup"]}
+          id="mockup"
         >
-          {children}
-        </section>
+          <div></div>
+        </Container>
+
+        <Container rounded classes={styles["container__content-main"]}>
+          <article>{children}</article>
+          <section
+            id="call-to-action"
+            className={styles["container__content-cta"]}
+          >
+            <Button buttonstyle="primary">Save</Button>
+          </section>
+        </Container>
       </main>
     </>
   );

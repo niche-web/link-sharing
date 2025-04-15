@@ -1,0 +1,17 @@
+@use "../../assets/styles/abstracts/variables" as *;
+
+.container {
+  background-color: $color-white;
+  &__background-dark {
+    background-color: $color-grey-light;
+  }
+  &__padding-small {
+    padding: 2rem;
+  }
+  &__padding-large {
+    padding: 4rem;
+  }
+  &__rounded {
+    border-radius: 12px;
+  }
+}

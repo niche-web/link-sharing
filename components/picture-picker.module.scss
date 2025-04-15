@@ -1,0 +1,25 @@
+.picture-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  &__input {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    color: #333;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+}

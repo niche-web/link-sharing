@@ -4,7 +4,8 @@
 .button {
   display: flex;
   align-items: center;
-  transition: all 0.3s ease-in-out;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
   @include mixin.heading("small");
   @include mixin.rounded("small");
   padding: 1.1rem 2.7rem;
@@ -21,7 +22,7 @@
       box-shadow: none;
     }
     &:active {
-      transform: scale(0.75);
+      transform: scale(0.95);
       box-shadow: 0 0 1rem rgb($color-purple, 0.25);
     }
     &:disabled,
@@ -34,11 +35,14 @@
     background-color: $color-white;
     color: $color-purple;
     border: 1px solid $color-purple;
-    &:hover,
-    &:active {
+    &:hover {
       background-color: $color-purple-light;
     }
+    &:active {
+      transform: scale(0.95);
+    }
     &:disabled,
+    &:disabled:hover,
     &--disabled {
       background-color: $color-purple-light;
       cursor: not-allowed;

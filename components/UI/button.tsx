@@ -3,6 +3,7 @@ import Link from "next/link";
 import NavLink from "./nav-link";
 import styles from "./button.module.scss";
 import { LinkProps } from "next/link";
+import { log } from "console";
 
 type ButtonProps = ComponentPropsWithoutRef<"button"> & {
   href?: never;
@@ -14,19 +15,23 @@ export type CustomLinkProps = ComponentPropsWithoutRef<"a"> &
 
 type ExtraStylingProps = {
   tab?: boolean;
-  buttonStyle?: "primary" | "secondary";
+  buttonstyle?: "primary" | "secondary";
 };
 
 type Props = (ButtonProps | CustomLinkProps) & ExtraStylingProps;
 
-const isLinkProps = (props: Props): props is CustomLinkProps => {
+const isLinkProps = (
+  props: Props
+): props is CustomLinkProps & ExtraStylingProps => {
   return "href" in props;
 };
 
 const Button = (props: Props) => {
-  const classStyle = styles[`button--${props.buttonStyle}`];
+  // const { buttonstyle, className, href, children, ...otherProps } = props;
+  const classStyle = styles[`button--${props.buttonstyle}`];
   if (isLinkProps(props)) {
-    const { buttonStyle, className, href, children, ...otherProps } = props;
+    const { href, className, tab, buttonstyle, children, ...otherProps } =
+      props;
     if (props.tab) {
       return (
         <NavLink
@@ -49,13 +54,13 @@ const Button = (props: Props) => {
       );
     }
   }
-
+  const { href, className, tab, buttonstyle, children, ...otherProps } = props;
   return (
     <button
-      className={`${styles.button} ${classStyle} ${props.className}`}
-      {...props}
+      className={`${styles.button} ${classStyle} ${className}`}
+      {...otherProps}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

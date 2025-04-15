@@ -14,7 +14,8 @@
       background-color: $color-white;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      padding-top: 10.15rem;
 
       div {
         width: 30.7rem;
@@ -27,6 +28,14 @@
     &-main {
       padding: 4rem 4rem 2.4rem;
       background-color: $color-white;
+    }
+    &-cta {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 4rem;
+      padding: 2.4rem 4rem;
+      border-top: 1px solid $color-borders;
     }
   }
 }

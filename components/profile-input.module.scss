@@ -1,0 +1,26 @@
+@use "../assets/styles/abstracts/variables" as *;
+
+.profile-input {
+  display: grid;
+  grid-template-columns: 25.6rem 1fr;
+  align-items: center;
+
+  &__input {
+    grid-column: 2 / 3;
+    padding: 1.2rem 1.6rem;
+    border-radius: 8px;
+    border: 1px solid $color-borders;
+    background-color: $color-white;
+    color: #333;
+
+    &:focus {
+      border-color: $color-purple;
+      box-shadow: 0 0 3.2rem 0 rgba($color-purple, 0.25);
+    }
+  }
+  &__error {
+    color: $color-red;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
