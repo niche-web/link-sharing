@@ -1,9 +1,8 @@
-import { type ComponentPropsWithoutRef } from "react";
+import { ElementType, type ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import NavLink from "./nav-link";
 import styles from "./button.module.scss";
 import { LinkProps } from "next/link";
-import { log } from "console";
 
 type ButtonProps = ComponentPropsWithoutRef<"button"> & {
   href?: never;
@@ -16,6 +15,7 @@ export type CustomLinkProps = ComponentPropsWithoutRef<"a"> &
 type ExtraStylingProps = {
   tab?: boolean;
   buttonstyle?: "primary" | "secondary";
+  icon?: ElementType;
 };
 
 type Props = (ButtonProps | CustomLinkProps) & ExtraStylingProps;
@@ -27,11 +27,17 @@ const isLinkProps = (
 };
 
 const Button = (props: Props) => {
-  // const { buttonstyle, className, href, children, ...otherProps } = props;
   const classStyle = styles[`button--${props.buttonstyle}`];
   if (isLinkProps(props)) {
-    const { href, className, tab, buttonstyle, children, ...otherProps } =
-      props;
+    const {
+      href,
+      className,
+      tab,
+      buttonstyle,
+      icon: Icon,
+      children,
+      ...otherProps
+    } = props;
     if (props.tab) {
       return (
         <NavLink
@@ -39,6 +45,7 @@ const Button = (props: Props) => {
           className={`${styles.button} ${className} `}
           {...otherProps}
         >
+          <span className={styles.button__icon}>{Icon && <Icon />}</span>
           {children}
         </NavLink>
       );
@@ -49,17 +56,27 @@ const Button = (props: Props) => {
           className={`${styles.button} ${classStyle} ${className}`}
           {...otherProps}
         >
+          <span className={styles.button__icon}>{Icon && <Icon />}</span>
           {children}
         </Link>
       );
     }
   }
-  const { href, className, tab, buttonstyle, children, ...otherProps } = props;
+  const {
+    href,
+    className,
+    tab,
+    buttonstyle,
+    icon: Icon,
+    children,
+    ...otherProps
+  } = props;
   return (
     <button
       className={`${styles.button} ${classStyle} ${className}`}
       {...otherProps}
     >
+      <span className={styles.button__icon}>{Icon && <Icon />}</span>
       {children}
     </button>
   );

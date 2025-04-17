@@ -19,11 +19,13 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
           classes={styles["container__content-mockup"]}
           id="mockup"
         >
-          <div></div>
+          <div className={styles["container__content-mockup_app"]}></div>
         </Container>
 
         <Container rounded classes={styles["container__content-main"]}>
-          <article>{children}</article>
+          <article className={styles["container__content-main_article"]}>
+            {children}
+          </article>
           <section
             id="call-to-action"
             className={styles["container__content-cta"]}

@@ -16,8 +16,7 @@
       justify-content: center;
       align-items: flex-start;
       padding-top: 10.15rem;
-
-      div {
+      &_app {
         width: 30.7rem;
         height: 63.1rem;
         background-image: url("../../assets/images/illustration-phone-mockup.svg");
@@ -28,6 +27,16 @@
     &-main {
       padding: 4rem 4rem 2.4rem;
       background-color: $color-white;
+      &_article {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        header {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+      }
     }
     &-cta {
       display: flex;

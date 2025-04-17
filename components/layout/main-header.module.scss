@@ -9,23 +9,11 @@
 
   &__middle {
     display: flex;
-    // align-items: center;
     gap: 1.6rem;
   }
 
   &__link:hover,
   &__link-active {
     color: $color-purple;
-    // font-weight: 700;
-  }
-  &__index-link {
-    svg {
-      width: 2rem;
-      height: 2rem;
-      margin-right: 0.8rem;
-      path {
-        fill: currentColor;
-      }
-    }
   }
 }

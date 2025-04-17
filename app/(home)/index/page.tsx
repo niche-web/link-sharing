@@ -1,6 +1,4 @@
-import EmptyIllustration from "@/components/empty-illustration";
-import Button from "@/components/UI/button";
-import styles from "./page.module.scss";
+import Links from "@/components/links";
 
 const IndexPage = () => {
   return (
@@ -12,13 +10,7 @@ const IndexPage = () => {
           world!
         </p>
       </header>
-
-      <section id="links">
-        <Button buttonstyle="secondary" className={styles.index__button_add}>
-          + Add new link
-        </Button>
-        <EmptyIllustration />
-      </section>
+      <Links />
     </>
   );
 };

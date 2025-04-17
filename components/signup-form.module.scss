@@ -1,0 +1,13 @@
+@use "../assets/styles/abstracts/variables" as *;
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  &__footer {
+    text-align: center;
+    a {
+      color: $color-purple;
+    }
+  }
+}

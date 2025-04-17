@@ -15,22 +15,12 @@ const MainHeader = ({ classes }: { classes?: string }) => {
       <ArtLogo />
       <ul className={styles["main-header__middle"]}>
         <li>
-          <Button
-            href="/index"
-            tab={true}
-            className={styles["main-header__index-link"]}
-          >
-            <LinkIcon />
+          <Button href="/index" tab={true} icon={LinkIcon}>
             Links
           </Button>
         </li>
         <li>
-          <Button
-            href="/profile"
-            tab={true}
-            className={styles["main-header__index-link"]}
-          >
-            <ProfileIcon />
+          <Button href="/profile" tab={true} icon={ProfileIcon}>
             Profile Details
           </Button>
         </li>
