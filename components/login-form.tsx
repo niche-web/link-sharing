@@ -1,4 +1,4 @@
-import InputAuth from "./input-auth";
+import InputIcon from "./input-icon";
 import Button from "./UI/button";
 import styles from "./login-form.module.scss";
 import Link from "next/link";
@@ -8,13 +8,13 @@ import PasswordIcon from "@/assets/images/icon-password.svg?react";
 const LoginForm = () => {
   return (
     <form action="" className={styles["login-form"]}>
-      <InputAuth
+      <InputIcon
         label="Email address"
         icon={EmailIcon}
         placeholder="e.g. alex@email.com"
         errorMesage="Can't be empty"
       />
-      <InputAuth
+      <InputIcon
         label="Password"
         icon={PasswordIcon}
         placeholder="Enter your password"

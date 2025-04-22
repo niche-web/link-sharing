@@ -1,0 +1,31 @@
+@use "../assets/styles/abstracts/variables" as *;
+
+.sharing-link {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  color: $color-grey;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  // &__remove-button {
+  //   color: currentColor;
+  // }
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: $font-size-body-m;
+    color: currentColor;
+    &-icon {
+      width: 1.2rem;
+      height: 0.6rem;
+      svg path {
+        fill: currentColor;
+      }
+    }
+  }
+}

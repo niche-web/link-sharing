@@ -1,4 +1,4 @@
-import InputAuth from "./input-auth";
+import InputAuth from "./input-icon";
 import Button from "./UI/button";
 import styles from "./signup-form.module.scss";
 import Link from "next/link";

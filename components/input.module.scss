@@ -12,7 +12,7 @@
     border-radius: 8px;
     border: 1px solid $color-borders;
     background-color: $color-white;
-    color: #333;
+    color: $color-grey-dark;
     &-error {
       border-color: $color-red;
     }
@@ -21,7 +21,6 @@
       border-color: $color-purple;
       box-shadow: 0 0 3.2rem 0 rgba($color-purple, 0.25);
     }
-
   }
   &__error {
     grid-column: 2 / 3;

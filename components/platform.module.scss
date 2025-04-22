@@ -1,0 +1,24 @@
+@use "../assets/styles/abstracts/mixins" as mixin;
+@use "../assets/styles/abstracts/variables" as *;
+
+.platform {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  width: auto;
+  height: auto;
+  color: currentColor;
+  &__icon {
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+      path {
+        fill: currentColor;
+      }
+    }
+  }
+  &__name {
+    @include mixin.heading("small");
+  }
+}

@@ -1,12 +1,12 @@
 import { type InputProps } from "@/components/input";
 import { type ElementType } from "react";
-import styles from "./input-auth.module.scss";
+import styles from "./input-icon.module.scss";
 
 type InputAuthProps = InputProps & {
   icon?: ElementType;
 };
 
-const InputAuth = ({
+const InputIcon = ({
   icon: Icon,
   label,
   classes,
@@ -35,4 +35,4 @@ const InputAuth = ({
     </label>
   );
 };
-export default InputAuth;
+export default InputIcon;
