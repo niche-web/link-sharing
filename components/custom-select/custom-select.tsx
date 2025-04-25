@@ -5,13 +5,13 @@ import { platforms } from "@/utils/dummy-data";
 import PlatformElem from "@/components/platform";
 import { type Platform } from "@/utils/dummy-data";
 import styles from "./custom-select.module.scss";
-import { platform } from "os";
 
 type SelectProps = {
   title?: string;
   classes?: string;
   platform: Platform;
   onChange?: (value: string) => void;
+  label?: string;
 };
 
 const Select = ({
@@ -19,6 +19,7 @@ const Select = ({
   classes,
   title,
   onChange,
+  label,
   ...otherProps
 }: SelectProps) => {
   const [isPickerOpen, setPickerOpen] = useState<boolean>(false);
@@ -43,6 +44,8 @@ const Select = ({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const listBoxId = "custom-select-listbox";
 
   const handlePickOption = (index: number) => {
     setSelectedPlatform(platforms[index]);
@@ -90,31 +93,45 @@ const Select = ({
         break;
     }
   };
-  console.log("platform:", selectedPlatform);
 
   return (
     <div
       ref={selectRef}
       className={`${styles.select} ${classes}`}
       onKeyDown={handleKeyDown}
+      role="combobox"
+      aria-haspopup="listbox"
+      aria-expanded={isPickerOpen}
+      aria-controls={listBoxId}
+      aria-activedescendant={
+        isPickerOpen ? `option-${highlightedPlatformIndex}` : undefined
+      }
+      aria-label={label}
     >
       <label id="select-label" className={styles.select__label}>
-        Platform
+        {label}
       </label>
       <button
+        aria-labelledby="select-label"
         type="button"
         className={styles.select__display}
         onClick={() => setPickerOpen((prevValue) => !prevValue)}
       >
         <PlatformElem name={selectedPlatform} />
+        <span></span>
       </button>
       <ul
+        id={listBoxId}
+        role="listbox"
         className={`${styles.select__picker} ${
           isPickerOpen ? styles["select__picker-open"] : ""
         }`}
       >
         {platforms.map((platform, index) => (
           <li
+            id={`option-${index}`}
+            role="option"
+            aria-selected={index === highlightedPlatformIndex}
             key={index}
             onClick={() => handlePickOption(index)}
             onMouseOver={() => setHighlightedPlatformIndex(index)}

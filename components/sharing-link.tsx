@@ -15,7 +15,7 @@ type SharingLinkProps = {
 
 const SharingLink = ({ link, index, ...otherProps }: SharingLinkProps) => {
   const dispatch = useStore(true)[1];
-  console.log("link-platform", link.platform);
+
   const handlePlatformChange = (platform: Link["platform"]) => {
     dispatch("UPDATE_LINK", { ...link, platform });
   };
@@ -48,7 +48,11 @@ const SharingLink = ({ link, index, ...otherProps }: SharingLinkProps) => {
             Remove
           </button>
         </div>
-        <Select platform={link.platform} onChange={handlePlatformChange} />
+        <Select
+          platform={link.platform}
+          onChange={handlePlatformChange}
+          label="Platform"
+        />
         <InputIcon
           type="text"
           placeholder={`e.g. ${platformsUrlSlug[link.platform]}jhondoe`}
