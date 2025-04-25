@@ -8,5 +8,8 @@
   &--active {
     color: $color-purple;
     background-color: $color-purple-light;
+    &:focus {
+      outline: none;
+    }
   }
 }

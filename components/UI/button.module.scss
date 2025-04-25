@@ -9,6 +9,9 @@
   @include mixin.heading("small");
   @include mixin.rounded("small");
   padding: 1.1rem 2.7rem;
+  &:focus {
+    outline: 1px solid $color-purple;
+  }
   &--primary {
     background-color: $color-purple;
     color: $color-white;
@@ -24,6 +27,9 @@
     &:active {
       transform: scale(0.95);
       box-shadow: 0 0 1rem rgb($color-purple, 0.25);
+      &:focus {
+        outline: none;
+      }
     }
     &:disabled,
     &--disabled {
@@ -40,6 +46,9 @@
     }
     &:active {
       transform: scale(0.95);
+      &:focus {
+        outline: none;
+      }
     }
     &:disabled,
     &:disabled:hover,

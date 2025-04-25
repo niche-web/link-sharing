@@ -4,15 +4,19 @@ import EmptyIllustration from "@/components/empty-illustration";
 import Button from "@/components/UI/button";
 import SharingLink from "./sharing-link";
 import styles from "./links.module.scss";
-import { useState } from "react";
+import useStore from "@/store/store";
+import { platforms } from "@/utils/dummy-data";
 
 const Links = () => {
-  const [linkCount, setLinkCount] = useState<number[]>([]);
+  const [{ links }, dispatch] = useStore(true); // Replace 'false' with the appropriate value if needed
 
   const clickHandler = () => {
-    setLinkCount((prevCount) => [...prevCount, prevCount.length + 1]);
+    const newLink = {
+      id: Math.floor(Math.random() * 100) + Date.now(),
+      platform: platforms[links.length],
+    };
+    dispatch("ADD_LINK", newLink);
   };
-
   return (
     <section id="links" className={styles.links}>
       <Button
@@ -22,14 +26,12 @@ const Links = () => {
       >
         + Add new link
       </Button>
-      {linkCount.length === 0 ? (
+      {links.length === 0 ? (
         <EmptyIllustration />
       ) : (
         <ul className={styles.links__list}>
-          {linkCount.map((linkNumber, index) => (
-            <li key={index}>
-              <SharingLink number={linkNumber} />
-            </li>
+          {links.map((link, index) => (
+            <SharingLink link={link} key={index} index={index} />
           ))}
         </ul>
       )}

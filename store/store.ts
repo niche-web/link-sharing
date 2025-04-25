@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import {
   Actions,
@@ -7,7 +9,9 @@ import {
   UseStore,
 } from "@/types/store-types";
 
-let globalState: GlobalState = {};
+import configureLinksStore from "./links-store";
+
+let globalState: GlobalState = { links: [] };
 let listeners: Listener[] = [];
 let actions: Actions = {};
 
@@ -39,3 +43,5 @@ export const initStore = (userActions: Actions, initialState?: {}) => {
   globalState = { ...globalState, ...initialState };
   actions = { ...actions, ...userActions };
 };
+
+export default useStore;

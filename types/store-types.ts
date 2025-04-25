@@ -1,6 +1,14 @@
-export type GlobalState = {};
+import { type Platform } from "@/utils/dummy-data";
 
-export type Action = (globalState: GlobalState, payload?: any[]) => {};
+export type Link = {
+  id: number;
+  platform: Platform;
+  link?: string;
+};
+
+export type GlobalState = { links: Link[] };
+
+export type Action = (globalState: GlobalState, payload?: unknown) => {};
 
 export type Actions = {
   [key: string]: Action | null;
