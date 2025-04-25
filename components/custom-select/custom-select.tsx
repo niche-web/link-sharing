@@ -5,6 +5,7 @@ import { platforms } from "@/utils/dummy-data";
 import PlatformElem from "@/components/platform";
 import { type Platform } from "@/utils/dummy-data";
 import styles from "./custom-select.module.scss";
+import SelectButton from "@/assets/images/icon-chevron-down.svg?react";
 
 type SelectProps = {
   title?: string;
@@ -118,7 +119,14 @@ const Select = ({
         onClick={() => setPickerOpen((prevValue) => !prevValue)}
       >
         <PlatformElem name={selectedPlatform} />
-        <span></span>
+        <span
+          aria-hidden={true}
+          className={
+            isPickerOpen ? styles["select__button-up"] : styles.select__button
+          }
+        >
+          <SelectButton />
+        </span>
       </button>
       <ul
         id={listBoxId}

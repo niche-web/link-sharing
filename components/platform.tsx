@@ -15,7 +15,7 @@ const PlatformElem = ({ name, classes }: PlatformElemProps) => {
 
   return (
     <div className={`${styles.platform} ${classes}`}>
-      <span className={styles.platform__icon}>
+      <span className={styles.platform__icon} aria-hidden={true}>
         <Icon />
       </span>
       <span className={styles.platform__name}>{name}</span>

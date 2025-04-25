@@ -28,6 +28,13 @@
       box-shadow: 0 0 3.2rem 0 rgba($color-purple, 0.25);
     }
   }
+  &__button {
+    transition: 0.4s all;
+    &-up {
+      transition: 0.4s all;
+      rotate: 180deg;
+    }
+  }
   &__picker {
     background-color: $color-white;
     width: 100%;
