@@ -3,11 +3,11 @@
 import EmptyIllustration from "@/components/empty-illustration";
 import Button from "@/components/UI/button";
 import SharingLink from "./sharing-link";
-import styles from "./links.module.scss";
+import styles from "./links-container.module.scss";
 import useStore from "@/store/store";
 import { platforms } from "@/utils/dummy-data";
 
-const Links = () => {
+const LinksContainer = () => {
   const [{ links }, dispatch] = useStore(true); // Replace 'false' with the appropriate value if needed
 
   const clickHandler = () => {
@@ -39,4 +39,4 @@ const Links = () => {
   );
 };
 
-export default Links;
+export default LinksContainer;

@@ -24,16 +24,10 @@ const Select = ({
   ...otherProps
 }: SelectProps) => {
   const [isPickerOpen, setPickerOpen] = useState<boolean>(false);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform>(platform);
   const [highlightedPlatformIndex, setHighlightedPlatformIndex] = useState<
     number | null
   >(0);
   const selectRef = useRef<HTMLDivElement>(null);
-
-  //Update the select value every time the platform's value changes
-  useEffect(() => {
-    setSelectedPlatform(platform);
-  }, [platform]);
 
   // Close picker if clicked outside
   useEffect(() => {
@@ -49,7 +43,6 @@ const Select = ({
   const listBoxId = "custom-select-listbox";
 
   const handlePickOption = (index: number) => {
-    setSelectedPlatform(platforms[index]);
     onChange?.(platforms[index]);
     setPickerOpen(false);
   };
@@ -100,6 +93,7 @@ const Select = ({
       ref={selectRef}
       className={`${styles.select} ${classes}`}
       onKeyDown={handleKeyDown}
+      tabIndex={0}
       role="combobox"
       aria-haspopup="listbox"
       aria-expanded={isPickerOpen}
@@ -118,7 +112,7 @@ const Select = ({
         className={styles.select__display}
         onClick={() => setPickerOpen((prevValue) => !prevValue)}
       >
-        <PlatformElem name={selectedPlatform} />
+        <PlatformElem name={platform} />
         <span
           aria-hidden={true}
           className={
@@ -135,7 +129,7 @@ const Select = ({
           isPickerOpen ? styles["select__picker-open"] : ""
         }`}
       >
-        {platforms.map((platform, index) => (
+        {platforms.map((platformOption, index) => (
           <li
             id={`option-${index}`}
             role="option"
@@ -144,7 +138,7 @@ const Select = ({
             onClick={() => handlePickOption(index)}
             onMouseOver={() => setHighlightedPlatformIndex(index)}
             className={`${styles.select__option} ${
-              selectedPlatform == platform
+              platformOption === platform
                 ? styles["select__option-selected"]
                 : ""
             } ${
@@ -153,7 +147,7 @@ const Select = ({
                 : ""
             }`}
           >
-            <PlatformElem name={platform} />
+            <PlatformElem name={platformOption} />
           </li>
         ))}
       </ul>

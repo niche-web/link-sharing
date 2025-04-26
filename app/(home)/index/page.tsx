@@ -1,4 +1,4 @@
-import Links from "@/components/links";
+import LinksContainer from "@/components/links-container";
 
 const IndexPage = () => {
   return (
@@ -10,7 +10,7 @@ const IndexPage = () => {
           world!
         </p>
       </header>
-      <Links />
+      <LinksContainer />
     </>
   );
 };
