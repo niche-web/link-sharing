@@ -2,7 +2,7 @@
 
 import EmptyIllustration from "@/components/empty-illustration";
 import Button from "@/components/UI/button";
-import SharingLink from "./sharing-link";
+import Links from "./links";
 import styles from "./links-container.module.scss";
 import useStore from "@/store/store";
 import { platforms } from "@/utils/dummy-data";
@@ -26,15 +26,7 @@ const LinksContainer = () => {
       >
         + Add new link
       </Button>
-      {links.length === 0 ? (
-        <EmptyIllustration />
-      ) : (
-        <ul className={styles.links__list}>
-          {links.map((link, index) => (
-            <SharingLink link={link} key={index} index={index} />
-          ))}
-        </ul>
-      )}
+      {links.length === 0 ? <EmptyIllustration /> : <Links />}
     </section>
   );
 };
