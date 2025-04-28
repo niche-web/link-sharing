@@ -15,6 +15,8 @@ type SelectProps = {
   label?: string;
 };
 
+const listBoxId = "custom-select-listbox";
+
 const Select = ({
   platform,
   classes,
@@ -27,20 +29,23 @@ const Select = ({
   const [highlightedPlatformIndex, setHighlightedPlatformIndex] = useState<
     number | null
   >(0);
+  const [pickerHeight, setPickerHeight] = useState(0);
   const selectRef = useRef<HTMLDivElement>(null);
+  const pickerRef = useRef<HTMLDivElement>(null);
 
   // Close picker if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!selectRef.current?.contains(event.target as Node)) {
+      if (
+        !selectRef.current?.contains(event.target as Node) &&
+        document.body.contains(event.target as Node)
+      ) {
         setPickerOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const listBoxId = "custom-select-listbox";
 
   const handlePickOption = (index: number) => {
     onChange?.(platforms[index]);

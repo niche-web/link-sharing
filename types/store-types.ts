@@ -1,7 +1,7 @@
 import { type Platform } from "@/utils/dummy-data";
 
 export type Link = {
-  id: number;
+  id: string;
   platform: Platform;
   link?: string;
 };

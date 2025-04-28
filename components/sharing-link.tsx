@@ -7,14 +7,24 @@ import styles from "./sharing-link.module.scss";
 import { platformsUrlSlug } from "@/utils/dummy-data";
 import { type Link } from "@/types/store-types";
 import useStore from "@/store/store";
+import { useRef } from "react";
 
 type SharingLinkProps = {
   link: Link;
   index: number;
+  id: string;
+  onMoveLink: (fromIndex: number, toIndex: number) => void;
 };
 
-const SharingLink = ({ link, index, ...otherProps }: SharingLinkProps) => {
+const SharingLink = ({
+  link,
+  index,
+  id,
+  onMoveLink,
+  ...otherProps
+}: SharingLinkProps) => {
   const dispatch = useStore(true)[1];
+  const linkRef = useRef(null);
 
   const handlePlatformChange = (platform: Link["platform"]) => {
     dispatch("UPDATE_LINK", { ...link, platform });
@@ -23,44 +33,51 @@ const SharingLink = ({ link, index, ...otherProps }: SharingLinkProps) => {
   const handleRemoveLink = () => {
     dispatch("REMOVE_LINK", link.id);
   };
+
+  const handleDragStart = (e) => {
+    e.stopPropagation();
+    e.dataTransfer.setData("text/html", e.target.innerHTML);
+  };
+
   return (
     <Container
-      as="li"
+      ondragstart={handleDragStart}
+      draggable
       rounded
       dark
       padSize="small"
-      classes={styles["sharing-link"]}
+      id={id}
+      classes={styles.link}
+      ref={linkRef}
       {...otherProps}
     >
-      <form action="" className={styles["sharing-link__form"]}>
-        <div className={styles["sharing-link__header"]}>
-          <h2 className={styles["sharing-link__title"]}>
-            <span className={styles["sharing-link__title-icon"]}>
-              <DragDropIcon />
-            </span>
-            <span>Link #{index + 1}</span>
-          </h2>
-          <button
-            type="button"
-            className={styles["sharing-link__remove-button"]}
-            onClick={handleRemoveLink}
-          >
-            Remove
-          </button>
-        </div>
-        <Select
-          platform={link.platform}
-          onChange={handlePlatformChange}
-          label="Platform"
-        />
-        <InputIcon
-          type="text"
-          placeholder={`e.g. ${platformsUrlSlug[link.platform]}jhondoe`}
-          icon={LinkIcon}
-          label="Link"
-          pattern={`${platformsUrlSlug[link.platform]}.+`}
-        />
-      </form>
+      <div className={styles.link__header}>
+        <h2 className={styles.link__title}>
+          <span className={styles["link__title-icon"]}>
+            <DragDropIcon />
+          </span>
+          <span>Link #{index + 1}</span>
+        </h2>
+        <button
+          type="button"
+          className={styles["link__remove-button"]}
+          onClick={handleRemoveLink}
+        >
+          Remove
+        </button>
+      </div>
+      <Select
+        platform={link.platform}
+        onChange={handlePlatformChange}
+        label="Platform"
+      />
+      <InputIcon
+        type="text"
+        placeholder={`e.g. ${platformsUrlSlug[link.platform]}jhondoe`}
+        icon={LinkIcon}
+        label="Link"
+        pattern={`${platformsUrlSlug[link.platform]}.+`}
+      />
     </Container>
   );
 };

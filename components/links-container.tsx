@@ -12,7 +12,7 @@ const LinksContainer = () => {
 
   const clickHandler = () => {
     const newLink = {
-      id: Math.floor(Math.random() * 100) + Date.now(),
+      id: `item_${Math.floor(Math.random() * 100) + Date.now()}`,
       platform: platforms[links.length],
     };
     dispatch("ADD_LINK", newLink);

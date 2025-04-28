@@ -1,7 +1,6 @@
 import {
   type ElementType,
   type ReactNode,
-  type ComponentPropsWithoutRef,
   type ComponentPropsWithRef,
 } from "react";
 import styles from "./container.module.scss";

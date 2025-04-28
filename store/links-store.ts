@@ -47,6 +47,22 @@ const ConfigureLinksStore = () => {
           links: [...filteredLinks],
         };
       },
+      MOVE_LINK: (
+        state: GlobalState,
+        indexes: { fromIndex: number; toIndex: number }
+      ) => {
+        const { fromIndex, toIndex } = indexes;
+        if (!indexes) {
+          throw new Error("In 'MOVE_LINK' action Payload is required.");
+        }
+        let updatedLinks = [...state.links];
+        const [movedItem] = updatedLinks.splice(fromIndex, 1);
+        updatedLinks.splice(toIndex, 0, movedItem);
+        return {
+          ...state,
+          links: [...updatedLinks],
+        };
+      },
     };
 
     initStore(linksActions, { links: [] });
