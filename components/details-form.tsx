@@ -1,5 +1,5 @@
 import PicturePicker from "./picture-picker";
-import Input from "./input";
+import Input from "./UI/input";
 import styles from "./details-form.module.scss";
 import Container from "@/components/UI/container";
 

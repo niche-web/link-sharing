@@ -1,5 +1,5 @@
-@use "../assets/styles/abstracts/mixins" as mixin;
-@use "../assets/styles/abstracts/variables" as *;
+@use "../../assets/styles/abstracts/mixins" as mixin;
+@use "../../assets/styles/abstracts/variables" as *;
 
 .platform {
   display: inline-flex;

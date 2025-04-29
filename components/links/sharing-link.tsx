@@ -1,8 +1,8 @@
-import Container from "./UI/container";
-import InputIcon from "./input-icon";
+import Container from "../UI/container";
+import InputIcon from "../UI/input-icon";
 import LinkIcon from "@/assets/images/icon-link.svg?react";
 import DragDropIcon from "@/assets/images/icon-drag-and-drop.svg?react";
-import Select from "./custom-select/custom-select";
+import Select from "../custom-select/custom-select";
 import styles from "./sharing-link.module.scss";
 import { platformsUrlSlug } from "@/utils/dummy-data";
 import { type Link } from "@/types/store-types";

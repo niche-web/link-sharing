@@ -1,4 +1,4 @@
-import { type InputProps } from "@/components/input";
+import { type InputProps } from "@/components/UI/input";
 import { type ElementType } from "react";
 import styles from "./input-icon.module.scss";
 

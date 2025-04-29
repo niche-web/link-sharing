@@ -1,4 +1,4 @@
-import LinksContainer from "@/components/links-container";
+import LinksContainer from "@/components/links/links-container";
 
 const IndexPage = () => {
   return (
