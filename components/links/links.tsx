@@ -13,7 +13,7 @@ const Links = () => {
   return (
     <ul className={styles.links}>
       {links.map((link, index) => (
-        <LinkWrapper key={index}>
+        <LinkWrapper key={index} index={index}>
           <SharingLink
             link={link}
             index={index}

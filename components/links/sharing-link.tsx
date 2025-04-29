@@ -7,7 +7,8 @@ import styles from "./sharing-link.module.scss";
 import { platformsUrlSlug } from "@/utils/dummy-data";
 import { type Link } from "@/types/store-types";
 import useStore from "@/store/store";
-import { useRef } from "react";
+import { useRef, useContext, type DragEvent } from "react";
+import { dropContext } from "./link-wrapper";
 
 type SharingLinkProps = {
   link: Link;
@@ -26,6 +27,8 @@ const SharingLink = ({
   const dispatch = useStore(true)[1];
   const linkRef = useRef(null);
 
+  const { disableDropStyle, enableDropStyle } = useContext(dropContext);
+
   const handlePlatformChange = (platform: Link["platform"]) => {
     dispatch("UPDATE_LINK", { ...link, platform });
   };
@@ -34,15 +37,17 @@ const SharingLink = ({
     dispatch("REMOVE_LINK", link.id);
   };
 
-  const handleDragStart = (e) => {
-    e.stopPropagation();
-    e.dataTransfer.setData("text/html", e.target.innerHTML);
+  const handleDragStart = (event: DragEvent) => {
+    console.log("dragStart", event.target);
+    event.dataTransfer.setData("linkIndex", index.toString());
+    disableDropStyle();
   };
 
   return (
     <Container
-      ondragstart={handleDragStart}
-      draggable
+      onDragStart={handleDragStart}
+      onDragEnd={() => enableDropStyle()}
+      draggable={true}
       rounded
       dark
       padSize="small"

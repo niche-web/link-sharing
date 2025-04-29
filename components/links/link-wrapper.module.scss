@@ -1,0 +1,8 @@
+@use "../../assets/styles/abstracts/variables" as *;
+
+.link-wrapper {
+  &__over > div {
+    background-color: $color-purple-hover;
+    opacity: 0.5;
+  }
+}
