@@ -7,25 +7,17 @@ import styles from "./sharing-link.module.scss";
 import { platformsUrlSlug } from "@/utils/dummy-data";
 import { type Link } from "@/types/store-types";
 import useStore from "@/store/store";
-import { useRef, useContext, type DragEvent } from "react";
+import { useContext, type DragEvent } from "react";
 import { dropContext } from "./link-wrapper";
 
 type SharingLinkProps = {
   link: Link;
   index: number;
   id: string;
-  onMoveLink: (fromIndex: number, toIndex: number) => void;
 };
 
-const SharingLink = ({
-  link,
-  index,
-  id,
-  onMoveLink,
-  ...otherProps
-}: SharingLinkProps) => {
+const SharingLink = ({ link, index, id, ...otherProps }: SharingLinkProps) => {
   const dispatch = useStore(true)[1];
-  const linkRef = useRef(null);
 
   const { disableDropStyle, enableDropStyle } = useContext(dropContext);
 
@@ -38,7 +30,6 @@ const SharingLink = ({
   };
 
   const handleDragStart = (event: DragEvent) => {
-    console.log("dragStart", event.target);
     event.dataTransfer.setData("linkIndex", index.toString());
     disableDropStyle();
   };
@@ -53,7 +44,6 @@ const SharingLink = ({
       padSize="small"
       id={id}
       classes={styles.link}
-      ref={linkRef}
       {...otherProps}
     >
       <div className={styles.link__header}>
