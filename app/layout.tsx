@@ -1,6 +1,7 @@
 import "@/assets/styles/globals.scss";
 import { ReactNode } from "react";
 import ConfigureLinksStore from "@/store/links-store";
+import ConfigureUserStore from "@/store/user-details-store";
 
 export const metadata = {
   title: "Link Sharing App",
@@ -11,6 +12,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <ConfigureLinksStore />
+      <ConfigureUserStore />
       <body>{children}</body>
     </html>
   );

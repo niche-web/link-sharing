@@ -2,13 +2,14 @@ import MainHeader from "@/components/layout/main-header";
 import styles from "./home-layout.module.scss";
 import Button from "@/components/UI/button";
 import Container from "@/components/UI/container";
+import MockupApp from "@/components/mockup/mockup-app";
 
 export const metadata = {
   title: "Index Page",
   description: "Customize your links",
 };
 
-const HomeLayout = ({ children }: { children: React.ReactNode }) => {
+const HomeLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <MainHeader classes={styles.container__header} />
@@ -19,7 +20,9 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
           classes={styles["container__content-mockup"]}
           id="mockup"
         >
-          <div className={styles["container__content-mockup_app"]}></div>
+          <div className={styles["container__content-mockup_app"]}>
+            <MockupApp linkLimit={5} />
+          </div>
         </Container>
 
         <Container rounded classes={styles["container__content-main"]}>

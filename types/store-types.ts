@@ -6,7 +6,17 @@ export type Link = {
   link?: string;
 };
 
-export type GlobalState = { links: Link[] };
+export type User = {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  image?: string;
+};
+
+export type GlobalState = {
+  links: Link[];
+  userDetails: User;
+};
 
 export type Action = (globalState: GlobalState, payload?: unknown) => {};
 

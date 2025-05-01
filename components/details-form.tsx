@@ -1,3 +1,5 @@
+"use client";
+
 import PicturePicker from "./picture-picker";
 import Input from "./UI/input";
 import styles from "./details-form.module.scss";

@@ -1,0 +1,90 @@
+@use "../../assets/styles/abstracts/variables" as *;
+
+.mockup-app {
+  &__header {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  &__platforms {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: self-start;
+    gap: 1.8rem;
+    &-profile {
+      background-color: $color-white;
+    }
+  }
+  &__platform span {
+    font-weight: 400;
+  }
+
+  &__item {
+    color: $color-white;
+    background-image: url("../../assets/images/icon-arrow-right.svg");
+    background-repeat: no-repeat;
+    background-position: right 1.6rem center;
+    padding: 1rem 1.6rem;
+    border-radius: 8px;
+  }
+  &__item-frontendmentor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $color-grey-dark;
+    padding: 1rem 1.6rem;
+    border-radius: 8px;
+    border: 1px solid $color-borders;
+  }
+}
+
+.right__arrow {
+  width: 1.5rem;
+  height: 1.5rem;
+  path {
+    fill: currentColor;
+  }
+}
+
+.color {
+  &-github {
+    background-color: $color-github;
+  }
+  &-frontendmentor {
+    background-color: $color-frontendmentor;
+  }
+  &-twitter {
+    background-color: $color-twitter;
+  }
+  &-linkedin {
+    background-color: $color-linkedin;
+  }
+  &-youtube {
+    background-color: $color-youtube;
+  }
+  &-facebook {
+    background-color: $color-facebook;
+  }
+  &-twitch {
+    background-color: $color-twitch;
+  }
+  &-devto {
+    background-color: $color-devto;
+  }
+  &-codewars {
+    background-color: $color-codewars;
+  }
+  &-freecodecamp {
+    background-color: $color-freecodecamp;
+  }
+  &-gitlab {
+    background-color: $color-gitlab;
+  }
+  &-hashnode {
+    background-color: $color-hashnode;
+  }
+  &-stackoverflow {
+    background-color: $color-stackoverflow;
+  }
+}

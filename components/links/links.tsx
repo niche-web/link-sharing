@@ -1,3 +1,5 @@
+"use client";
+
 import useStore from "@/store/store";
 import SharingLink from "./sharing-link";
 import styles from "./links.module.scss";

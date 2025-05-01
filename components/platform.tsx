@@ -10,7 +10,8 @@ export type PlatformElemProps = {
 
 const PlatformElem = ({ name, classes }: PlatformElemProps) => {
   const Icon: ElementType = require(`@/assets/images/icon-${slugify(
-    name
+    name,
+    "url"
   )}.svg?react`).default;
 
   return (

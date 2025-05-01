@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useState, createContext } from "react";
 import styles from "./link-wrapper.module.scss";
 import useStore from "@/store/store";

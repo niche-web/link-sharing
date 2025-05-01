@@ -9,9 +9,10 @@ import {
   UseStore,
 } from "@/types/store-types";
 
-import configureLinksStore from "./links-store";
-
-let globalState: GlobalState = { links: [] };
+let globalState: GlobalState = {
+  links: [],
+  userDetails: { firstName: "", lastName: "" },
+};
 let listeners: Listener[] = [];
 let actions: Actions = {};
 

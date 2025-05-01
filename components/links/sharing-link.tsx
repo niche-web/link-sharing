@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "../UI/container";
 import InputIcon from "../UI/input-icon";
 import LinkIcon from "@/assets/images/icon-link.svg?react";

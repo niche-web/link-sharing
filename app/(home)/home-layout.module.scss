@@ -19,9 +19,15 @@
       &_app {
         width: 30.7rem;
         height: 63.1rem;
+        padding: 6.35rem 3.5rem 5.35rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 15.8rem 30rem;
+        row-gap: 5.6rem;
         background-image: url("../../assets/images/illustration-phone-mockup.svg");
         background-repeat: no-repeat;
         background-position: center;
+        padding-bottom: 5.35rem;
       }
     }
     &-main {

@@ -4,12 +4,29 @@ import styles from "./picture-picker.module.scss";
 import Container from "./UI/container";
 import Image from "next/image";
 import { useState, useRef } from "react";
-import uploadIcon from "@/assets/images/icon-upload-image.svg";
+import UploadIcon from "@/assets/images/icon-upload-image.svg?react";
 
 type PicturePickerProps = { classes?: string };
 
 const PicturePicker = ({ classes }: PicturePickerProps) => {
-  const [pickedPicture, setPickedPicture] = useState<ArrayBuffer | null>(null);
+  const [pickedPicture, setPickedPicture] = useState<
+    string | ArrayBuffer | null
+  >(null);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const pictureText = pickedPicture ? "Change Image" : "+ Upload Image";
+
+  const handlePickPicture = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPickedPicture(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <Container
       rounded
@@ -21,26 +38,32 @@ const PicturePicker = ({ classes }: PicturePickerProps) => {
         Picture Profile
       </label>
       <input
+        ref={inputRef}
         className={styles["picture-picker__input"]}
         type="file"
         accept="image/png image/jpg"
         name="picture"
         id="picture"
+        onChange={handlePickPicture}
       />
-      <button className={styles["picture-picker__button"]} type="button">
-        {pickedPicture ? (
-          <Image src="" alt="" />
-        ) : (
-          <figure className={styles["picture-picker__button-empty"]}>
-            <Image
-              src={uploadIcon}
-              alt="Upload Icon Image"
-              width={40}
-              height={40}
-            />
-            <figcaption>+ Upload Image</figcaption>
-          </figure>
+      <button
+        className={styles["picture-picker__button"]}
+        type="button"
+        onClick={() => inputRef.current?.click()}
+      >
+        {pickedPicture && (
+          <div className={styles["picture-picker__button-picture"]}>
+            <Image src={pickedPicture as string} alt="Profile Picture" fill />
+          </div>
         )}
+        <figure
+          className={`${styles["picture-picker__button-empty"]} ${
+            pickedPicture ? styles["picture-picker__button-empty--hidden"] : ""
+          }`}
+        >
+          <UploadIcon />
+          <figcaption>{pictureText}</figcaption>
+        </figure>
       </button>
       <p className={styles["picture-picker__info"]}>
         Image must be below 1024x1024px. Use PNG or JPG format.
