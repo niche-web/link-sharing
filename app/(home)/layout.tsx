@@ -1,5 +1,6 @@
 import MainHeader from "@/components/layout/main-header";
 import styles from "./home-layout.module.scss";
+import SaveButton from "@/components/UI/save-button";
 import Button from "@/components/UI/button";
 import Container from "@/components/UI/container";
 import MockupApp from "@/components/mockup/mockup-app";
@@ -21,7 +22,7 @@ const HomeLayout = async ({ children }: { children: React.ReactNode }) => {
           id="mockup"
         >
           <div className={styles["container__content-mockup_app"]}>
-            <MockupApp linkLimit={5} />
+            <MockupApp />
           </div>
         </Container>
 
@@ -33,7 +34,7 @@ const HomeLayout = async ({ children }: { children: React.ReactNode }) => {
             id="call-to-action"
             className={styles["container__content-cta"]}
           >
-            <Button buttonstyle="primary">Save</Button>
+            <SaveButton />
           </section>
         </Container>
       </main>

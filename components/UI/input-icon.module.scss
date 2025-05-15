@@ -34,9 +34,6 @@
     grid-row: 1 / 2;
     font-size: $font-size-body-s;
     margin-bottom: 0.4rem;
-    &-error {
-      color: $color-red;
-    }
   }
   &__icon {
     grid-column: 1 / 2;

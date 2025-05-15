@@ -13,12 +13,12 @@ export const platforms = [
   "GitLab",
   "Hashnode",
   "Stack Overflow",
-] as const;
+];
 
 export type Platform = (typeof platforms)[number];
 
 export const platformsUrlSlug: Record<Platform, string> = {
-  GitHub: "https://github.com",
+  GitHub: "https://github.com/",
   "Frontend Mentor": "https://frontendmentor.io/profile/",
   Twitter: "https://x.com/",
   LinkedIn: "https://linkedin.com/in/",

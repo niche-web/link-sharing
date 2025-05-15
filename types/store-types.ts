@@ -3,7 +3,8 @@ import { type Platform } from "@/utils/dummy-data";
 export type Link = {
   id: string;
   platform: Platform;
-  link?: string;
+  linkUrl?: string;
+  validLink?: boolean;
 };
 
 export type User = {

@@ -6,14 +6,16 @@ import Links from "./links";
 import styles from "./links-container.module.scss";
 import useStore from "@/store/store";
 import { platforms } from "@/utils/dummy-data";
+import { type Link } from "@/types/store-types";
 
 const LinksContainer = () => {
-  const [{ links }, dispatch] = useStore(true); // Replace 'false' with the appropriate value if needed
+  const [{ links }, dispatch] = useStore(true);
 
   const clickHandler = () => {
-    const newLink = {
+    const newLink: Link = {
       id: `item_${Math.floor(Math.random() * 100) + Date.now()}`,
       platform: platforms[links.length],
+      validLink: false,
     };
     dispatch("ADD_LINK", newLink);
   };
@@ -21,7 +23,7 @@ const LinksContainer = () => {
     <section id="links" className={styles.links}>
       <Button
         buttonstyle="secondary"
-        className={styles.links__button_add}
+        classes={styles.links__button_add}
         onClick={clickHandler}
       >
         + Add new link

@@ -1,9 +1,52 @@
 @use "../../assets/styles/abstracts/variables" as *;
+@use "../../assets/styles/abstracts/mixins" as mixin;
 
 .mockup-app {
   &__header {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+    text-align: center;
+  }
+  &__initials {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: 900;
+    color: $color-purple;
+  }
+  &__image {
+    position: relative;
+    width: 9.6rem;
+    height: 9.6rem;
+    border-radius: 50%;
+    margin: 0 auto 1.8rem;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+    }
+    &-preview {
+      width: 10.4rem;
+      height: 10.4rem;
+    }
+  }
+  &__name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    background-color: $color-white;
+    &-preview {
+      margin-bottom: 0.8rem;
+      @include mixin.heading("medium");
+    }
+  }
+  &__email {
+    font-size: 1.4rem;
+    font-weight: 400;
+    background-color: $color-white;
+    &-preview {
+      font-size: $font-size-body-m;
+    }
   }
   &__platforms {
     grid-row: 2 / 3;
@@ -15,27 +58,39 @@
     &-profile {
       background-color: $color-white;
     }
+    &-preview {
+      gap: 2rem;
+    }
   }
-  &__platform span {
-    font-weight: 400;
+  &__platform {
+    span {
+      font-weight: 400;
+    }
+    &-preview {
+      span {
+        font-weight: 600;
+      }
+    }
   }
 
   &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.4rem;
     color: $color-white;
     background-image: url("../../assets/images/icon-arrow-right.svg");
     background-repeat: no-repeat;
     background-position: right 1.6rem center;
-    padding: 1rem 1.6rem;
+    padding: 0 1.6rem;
     border-radius: 8px;
-  }
-  &__item-frontendmentor {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: $color-grey-dark;
-    padding: 1rem 1.6rem;
-    border-radius: 8px;
-    border: 1px solid $color-borders;
+    &-frontendmentor {
+      color: $color-grey-dark;
+      border: 1px solid $color-borders;
+    }
+    &-preview {
+      height: 5.6rem;
+    }
   }
 }
 
@@ -74,6 +129,9 @@
   }
   &-codewars {
     background-color: $color-codewars;
+  }
+  &-codepen {
+    background-color: $color-codepen;
   }
   &-freecodecamp {
     background-color: $color-freecodecamp;

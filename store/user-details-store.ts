@@ -7,9 +7,9 @@ import { useEffect } from "react";
 const ConfigureUserStore = () => {
   useEffect(() => {
     const userDetailsActions: Actions = {
-      UPDATE_USER_DETAILS: (globalState: GlobalState, payload: {}) => {
-        const updatedUser = { ...globalState.userDetails };
-        return { ...updatedUser, ...payload };
+      UPDATE_USER_DETAILS: (state: GlobalState, payload: {}) => {
+        const updatedUser = { ...state.userDetails };
+        return { ...state, userDetails: { ...updatedUser, ...payload } };
       },
     };
 

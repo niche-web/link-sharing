@@ -22,6 +22,7 @@
     color: $color-purple;
     background-color: $color-purple-light;
     position: relative;
+    overflow: hidden;
     &-picture {
       img {
         object-fit: cover;

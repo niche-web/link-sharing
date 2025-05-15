@@ -36,6 +36,10 @@ const SharingLink = ({ link, index, id, ...otherProps }: SharingLinkProps) => {
     disableDropStyle();
   };
 
+  const handleUrlUpdate = (value: string, validLink: boolean) => {
+    dispatch("UPDATE_LINK", { ...link, linkUrl: value, validLink });
+  };
+
   return (
     <Container
       onDragStart={handleDragStart}
@@ -73,7 +77,11 @@ const SharingLink = ({ link, index, id, ...otherProps }: SharingLinkProps) => {
         placeholder={`e.g. ${platformsUrlSlug[link.platform]}jhondoe`}
         icon={LinkIcon}
         label="Link"
-        pattern={`${platformsUrlSlug[link.platform]}.+`}
+        title={`${platformsUrlSlug[link.platform]}jhondoe`}
+        pattern={platformsUrlSlug[link.platform] + ".+"}
+        onUpdate={handleUrlUpdate}
+        initialValue={link.linkUrl ?? ""}
+        required={true}
       />
     </Container>
   );

@@ -16,6 +16,7 @@ type ExtraStylingProps = {
   tab?: boolean;
   buttonstyle?: "primary" | "secondary";
   icon?: ElementType;
+  classes?: string;
 };
 
 type Props = (ButtonProps | CustomLinkProps) & ExtraStylingProps;
@@ -31,7 +32,7 @@ const Button = (props: Props) => {
   if (isLinkProps(props)) {
     const {
       href,
-      className,
+      classes,
       tab,
       buttonstyle,
       icon: Icon,
@@ -42,7 +43,7 @@ const Button = (props: Props) => {
       return (
         <NavLink
           href={href}
-          className={`${styles.button} ${className} `}
+          className={`${styles.button} ${classes} `}
           {...otherProps}
         >
           <span className={styles.button__icon}>{Icon && <Icon />}</span>
@@ -53,7 +54,7 @@ const Button = (props: Props) => {
       return (
         <Link
           href={href}
-          className={`${styles.button} ${classStyle} ${className}`}
+          className={`${styles.button} ${classStyle} ${classes}`}
           {...otherProps}
         >
           <span className={styles.button__icon}>{Icon && <Icon />}</span>
@@ -64,7 +65,7 @@ const Button = (props: Props) => {
   }
   const {
     href,
-    className,
+    classes,
     tab,
     buttonstyle,
     icon: Icon,
@@ -73,7 +74,7 @@ const Button = (props: Props) => {
   } = props;
   return (
     <button
-      className={`${styles.button} ${classStyle} ${className}`}
+      className={`${styles.button} ${classStyle} ${classes}`}
       {...otherProps}
     >
       <span className={styles.button__icon}>{Icon && <Icon />}</span>
