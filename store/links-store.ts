@@ -14,7 +14,7 @@ const ConfigureLinksStore = () => {
         const prevLinks = [...state.links];
         return {
           ...state,
-          links: [...prevLinks, link],
+          links: [link, ...prevLinks],
         };
       },
 

@@ -26,7 +26,7 @@ const Input = ({
   const [isValid, setIsValid] = useState(true);
   const [inputValue, setInputValue] = useState(initialValue || "");
 
-  // const inputRef = useRef<HTMLInputElement>(null);
+  const showError = !isValid && didType;
 
   const validationHandler = (value) => {
     if (required && value.trim() === "") {
@@ -62,7 +62,7 @@ const Input = ({
       <input
         // ref={inputRef}
         className={`${styles.control__input} ${
-          !isValid && didType ? styles["control__input-error"] : ""
+          showError ? styles["control__input-error"] : ""
         }`}
         onBlur={handleBlur}
         onInput={() => setDidType(false)}
@@ -70,9 +70,7 @@ const Input = ({
         value={inputValue}
         {...otherProps}
       />
-      {!isValid && didType && (
-        <span className={styles.control__error}>{error}</span>
-      )}
+      {!showError && <span className={styles.control__error}>{error}</span>}
     </label>
   );
 };

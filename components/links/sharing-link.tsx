@@ -21,7 +21,13 @@ type SharingLinkProps = {
 const SharingLink = ({ link, index, id, ...otherProps }: SharingLinkProps) => {
   const dispatch = useStore(true)[1];
 
-  const { disableDropStyle, enableDropStyle } = useContext(dropContext);
+  const {
+    disableDropStyle,
+    enableDropStyle,
+    enableDragging,
+    disableDragging,
+    dragging,
+  } = useContext(dropContext);
 
   const handlePlatformChange = (platform: Link["platform"]) => {
     dispatch("UPDATE_LINK", { ...link, platform });
@@ -40,11 +46,23 @@ const SharingLink = ({ link, index, id, ...otherProps }: SharingLinkProps) => {
     dispatch("UPDATE_LINK", { ...link, linkUrl: value, validLink });
   };
 
+  interface EnableDraggingEvent extends React.MouseEvent<HTMLButtonElement> {}
+
+  const HandleEnableDragging = (e: EnableDraggingEvent): void => {
+    e.preventDefault();
+    enableDragging();
+  };
+
+  const handledisableDragging = (e: EnableDraggingEvent): void => {
+    e.preventDefault();
+    disableDragging();
+  };
+
   return (
     <Container
       onDragStart={handleDragStart}
       onDragEnd={() => enableDropStyle()}
-      draggable={true}
+      draggable={dragging}
       rounded
       dark
       padSize="small"
@@ -54,15 +72,21 @@ const SharingLink = ({ link, index, id, ...otherProps }: SharingLinkProps) => {
     >
       <div className={styles.link__header}>
         <h2 className={styles.link__title}>
-          <span className={styles["link__title-icon"]}>
+          <button
+            className={styles["link__title-icon"]}
+            onMouseEnter={HandleEnableDragging}
+            onMouseLeave={handledisableDragging}
+            title="drag and drop link"
+          >
             <DragDropIcon />
-          </span>
+          </button>
           <span>Link #{index + 1}</span>
         </h2>
         <button
           type="button"
           className={styles["link__remove-button"]}
           onClick={handleRemoveLink}
+          title="remove link"
         >
           Remove
         </button>
@@ -82,6 +106,7 @@ const SharingLink = ({ link, index, id, ...otherProps }: SharingLinkProps) => {
         onUpdate={handleUrlUpdate}
         initialValue={link.linkUrl ?? ""}
         required={true}
+        autoComplete={`${platformsUrlSlug[link.platform]}jhondoe`}
       />
     </Container>
   );

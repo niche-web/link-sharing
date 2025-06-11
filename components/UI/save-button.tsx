@@ -10,7 +10,7 @@ const SaveButton = () => {
   const pathname = usePathname();
   const { links, userDetails } = useStore(true)[0];
 
-  let disableButton: Boolean = false;
+  let disableButton: boolean = false;
 
   if (pathname === "/index") {
     const invalid = (link: Link) => link.validLink === false;
@@ -22,7 +22,8 @@ const SaveButton = () => {
   return (
     <Button
       buttonstyle="primary"
-      classes={disableButton ? styles.disabled : ""}
+      classes={styles["save-button"]}
+      disabled={disableButton}
     >
       Save
     </Button>

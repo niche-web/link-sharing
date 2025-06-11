@@ -1,7 +1,9 @@
 @use "../../assets/styles/abstracts/variables" as *;
 
-.disabled {
-  background-color: $color-grey;
-  opacity: 0.5;
-  cursor: not-allowed;
+.save-button {
+  &:disabled {
+    background-color: $color-grey;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }

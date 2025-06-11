@@ -7,6 +7,9 @@ import useStore from "@/store/store";
 export const dropContext = createContext({
   disableDropStyle: () => {},
   enableDropStyle: () => {},
+  enableDragging: () => {},
+  disableDragging: () => {},
+  dragging: false,
 });
 
 const LinkWrapper = ({
@@ -18,6 +21,7 @@ const LinkWrapper = ({
 }) => {
   const [draggingOver, setDraggingOver] = useState<boolean>(false);
   const [enableDropStyle, setEnableDropStyle] = useState<boolean>(true);
+  const [isDragging, setIsDragging] = useState(false);
 
   const dispatch = useStore(false)[1];
 
@@ -44,6 +48,9 @@ const LinkWrapper = ({
       value={{
         disableDropStyle: () => setEnableDropStyle(false),
         enableDropStyle: () => setEnableDropStyle(true),
+        enableDragging: () => setIsDragging(true),
+        disableDragging: () => setIsDragging(false),
+        dragging: isDragging,
       }}
     >
       <li

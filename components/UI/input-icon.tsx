@@ -25,6 +25,8 @@ const InputIcon = ({
   const [error, setError] = useState("");
   const [isValid, setIsValid] = useState(true);
 
+  const showError = !isValid && didType;
+
   const validationHandler = useCallback(
     (value: string) => {
       if (required && value.trim() === "") {
@@ -72,7 +74,7 @@ const InputIcon = ({
       <span className={styles.control__icon}>{Icon && <Icon />}</span>
       <input
         className={`${styles.control__input} ${
-          !isValid ? styles["control__input-error"] : ""
+          showError ? styles["control__input-error"] : ""
         }`}
         onBlur={handleBlur}
         onChange={handleChange}
@@ -80,7 +82,7 @@ const InputIcon = ({
         {...otherProps}
       />
 
-      {!isValid && didType && (
+      {showError && (
         <span className={styles.control__error}>{errorMesage || error}</span>
       )}
     </label>
