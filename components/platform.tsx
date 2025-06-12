@@ -1,6 +1,6 @@
 import { type ElementType } from "react";
 import { slugify } from "@/utils/format";
-import { type Platform } from "@/utils/dummy-data";
+import { type Platform } from "@/utils/platforms-data";
 import styles from "./platform.module.scss";
 
 export type PlatformElemProps = {

@@ -5,7 +5,7 @@ import Button from "@/components/UI/button";
 import Links from "./links";
 import styles from "./links-container.module.scss";
 import useStore from "@/store/store";
-import { platforms } from "@/utils/dummy-data";
+import { platforms } from "@/utils/platforms-data";
 import { type Link } from "@/types/store-types";
 
 const LinksContainer = () => {

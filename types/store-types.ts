@@ -1,4 +1,4 @@
-import { type Platform } from "@/utils/dummy-data";
+import { type Platform } from "@/utils/platforms-data";
 
 export type Link = {
   id: string;

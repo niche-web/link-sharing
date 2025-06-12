@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { platforms } from "@/utils/dummy-data";
+import { platforms } from "@/utils/platforms-data";
 import PlatformElem from "@/components/platform";
-import { type Platform } from "@/utils/dummy-data";
+import { type Platform } from "@/utils/platforms-data";
 import styles from "./custom-select.module.scss";
 import SelectButton from "@/assets/images/icon-chevron-down.svg?react";
 

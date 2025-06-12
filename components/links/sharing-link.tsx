@@ -6,7 +6,7 @@ import LinkIcon from "@/assets/images/icon-link.svg?react";
 import DragDropIcon from "@/assets/images/icon-drag-and-drop.svg?react";
 import Select from "../custom-select/custom-select";
 import styles from "./sharing-link.module.scss";
-import { platformsUrlSlug } from "@/utils/dummy-data";
+import { platformsUrlSlug } from "@/utils/platforms-data";
 import { type Link } from "@/types/store-types";
 import useStore from "@/store/store";
 import { useContext, type DragEvent } from "react";
